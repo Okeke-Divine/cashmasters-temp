@@ -14,6 +14,12 @@ app.get("/", (req, res) => {
     console.log("App route");
 });
 
+app.get("/logic", (req,res) => {
+    res.send('Logic => fireAPIRequest');
+    console.log('Logic => fireAPIRequest');
+    fireAPIRequest();
+});
+
 app.get("/keep-alive", (req, res) => {
     res.send("Alive {200}!");
     console.log("=======>>>>THE SERVER WAS PINGED");
