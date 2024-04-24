@@ -16,21 +16,13 @@ app.get("/", (req, res) => {
 
 app.get("/keep-alive", (req, res) => {
     res.send("Alive {200}!");
-    console.log("THE SERVER WAS PINGED");
+    console.log("=======>>>>THE SERVER WAS PINGED");
 });
 
 function pingKeepAlive() {
     const KEEP_ALIVE_URL = process.env.KEEP_ALIVE_URL
     const server_url = KEEP_ALIVE_URL + ":" + PORT + "/keep-alive";
     http.get(server_url, (res) => {
-        const { statusCode } = res;
-        if (statusCode === 200) {
-            console.log("Ping successful");
-        } else {
-            console.error(`Error pinging keep-alive endpoint: ${statusCode}`);
-        }
-    }).on('error', (err) => {
-        console.error("Error pinging keep-alive endpoint:", err.message);
     });
 }
 

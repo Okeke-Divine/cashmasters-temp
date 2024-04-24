@@ -1,8 +1,9 @@
+require("dotenv").config();
 const puppeteer = require('puppeteer');
 const { getRandomItem } = require('./assets/utils/getRandomItem.js')
 
 const botConfiguration = {
-    headless: false,
+    headless: 'new',
     timeout: 0,
     executablePath:
         process.env.NODE_ENV === "production"
