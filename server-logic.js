@@ -2,10 +2,10 @@ require("dotenv").config();
 const puppeteer = require('puppeteer');
 const { getRandomItem } = require('./assets/utils/getRandomItem.js')
 
-console.log('=>fireAPIRequest');
+console.log('=>fireAPIRequest has been included');
 
 const botConfiguration = {
-    headless: false,
+    headless: 'new',
     timeout: 0,
     executablePath:
         process.env.NODE_ENV === "production"
@@ -29,9 +29,8 @@ function generateRandomPhoneNumber() {
 }
 
 const fireAPIRequest = async () => {
-    while (true) { // Infinite loop
-        try {
-            const browser = await puppeteer.launch(botConfiguration);
+    try {
+        puppeteer.launch(botConfiguration).then(async browser => {
             console.log('Browser Lauched');
 
             let userAgent = await getRandomItem('./assets/json/list-of-UA.json');
@@ -83,13 +82,14 @@ const fireAPIRequest = async () => {
 
             await page.waitForNavigation(),
                 console.log('Browser is closing...');
-                console.log('========================================================');
+            console.log('========================================================');
             setTimeout(function () {
                 browser.close();
+                fireAPIRequest();
             }, 5000);
-        } catch (err) {
-            console.log('An error just occured. ', err)
-        }
+        });
+    } catch (err) {
+        console.log('An error just occured. ', err);
     }
 }
 
