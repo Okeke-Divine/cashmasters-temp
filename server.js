@@ -29,5 +29,5 @@ function pingKeepAlive() {
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
     fireAPIRequest();
-    setInterval(pingKeepAlive, 5000);
+    // setInterval(pingKeepAlive, process.env.PING_TIME);
 });

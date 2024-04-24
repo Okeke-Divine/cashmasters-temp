@@ -2,6 +2,8 @@ require("dotenv").config();
 const puppeteer = require('puppeteer');
 const { getRandomItem } = require('./assets/utils/getRandomItem.js')
 
+console.log('=>fireAPIRequest');
+
 const botConfiguration = {
     headless: 'new',
     timeout: 0,
@@ -30,6 +32,7 @@ const fireAPIRequest = async () => {
     while (true) { // Infinite loop
         try {
             const browser = await puppeteer.launch(botConfiguration);
+            console.log('Browser Lauched');
 
             let userAgent = await getRandomItem('./assets/json/list-of-UA.json');
 
