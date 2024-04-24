@@ -5,7 +5,7 @@ const { getRandomItem } = require('./assets/utils/getRandomItem.js')
 console.log('=>fireAPIRequest');
 
 const botConfiguration = {
-    headless: 'new',
+    headless: false,
     timeout: 0,
     executablePath:
         process.env.NODE_ENV === "production"
