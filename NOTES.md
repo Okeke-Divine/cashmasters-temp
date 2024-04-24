@@ -1,0 +1,1 @@
+https://ng.cashmaple.com/sign/up?invite_code=6364567
